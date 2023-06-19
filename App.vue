@@ -1,6 +1,8 @@
 <script>
 import NavBtn from './components/NavBtn.vue';
 import SectionText from './components/SectionText.vue';
+import SectionTextAndImage from './components/SectionTextAndImage.vue';
+import Testimonials from './components/Testimonials.vue';
 
 import Logo from '@/assets/images/logo.svg?component';
 import IconHamburger from '@/assets/images/icon-hamburger.svg?component';
@@ -8,20 +10,23 @@ import IconArrow from '@/assets/images/icon-arrow-down.svg?component';
 
 import imgEgg from '@/assets/images/mobile/image-transform.jpg';
 import imgGlass from '@/assets/images/mobile/image-stand-out.jpg';
+// import imgPhotoEmily from '@/assets/images/image-emily.jpg'
 
 export default {
   data() {
     return {
       imgHeaderMB: 'bg-[url(@/assets/images/mobile/image-header.jpg)]',
-      imgCherry: 'bg-[url(@/assets/images/mobile/image-graphic-design.jpg)]',
       imgEgg,
       imgGlass,
       isBarOpen: false,
+      // imgPhotoEmily,
     }
   },
   components: {
     NavBtn,
     SectionText,
+    SectionTextAndImage,
+    Testimonials,
 
     Logo,
     IconHamburger,
@@ -36,8 +41,7 @@ export default {
 </script>
 <template>
   <body class=" flex flex-col items-center text-neo-dark-grayish-blue font-barlow">
-    <header
-      :class="` ${imgHeaderMB} bg-contain relative flex flex-col gap-[88px] w-[375px] h-[538px] px-6 py-8 bg-green-400`">
+    <header :class="` ${imgHeaderMB} bg-contain relative flex flex-col gap-[88px] w-[375px] h-[538px] px-6 py-8`">
       <nav class=" relative flex justify-between">
         <Logo />
         <IconHamburger @click="isBarOpen = !isBarOpen" :class="`  ${barState} cursor-pointer`" />
@@ -69,23 +73,19 @@ export default {
       <SectionText :data-index="0" />
       <img :src="imgGlass" alt="imgGlass">
       <SectionText :data-index="1" />
-
-      <!-- Hacer componente de esto -->
-      <div
-        :class="` flex flex-col justify-end gap-[27px] h-[600px] ${imgCherry} bg-contain px-6 pb-14 text-neo-dark-desaturated-cyan text-center`">
-        <h2 class=" text-[28px] leading-[36px] tracking-[-.2px] font-fraunces font-black">
-          Graphic design
-        </h2>
-        <p class=" text-[16px] leading-[27px] tracking-[-.11px] font-semibold">
-          Great design makes you memorable. We deliver artwork that underscores your brand message and captures potential
-          clients’ attention.
-        </p>
+      <SectionTextAndImage :data-index="0" />
+      <SectionTextAndImage :data-index="1" />
+      <div class=" flex flex-col gap-16 px-6 py-16 bg-neo-color-one text-center">
+        <h3 class=" text-[16px] leading-[18px] tracking-[4px] font-fraunces font-black uppercase">Client testimonials</h3>
+        <Testimonials :data-index="0" />
+        <Testimonials :data-index="1" />
+        <Testimonials :data-index="2" />
       </div>
     </main>
   </body>
 </template>
 <style>
 .g {
-  color: hsl(167, 40%, 24%);
+  color: hsl(213, 9%, 39%);
 }
 </style>
