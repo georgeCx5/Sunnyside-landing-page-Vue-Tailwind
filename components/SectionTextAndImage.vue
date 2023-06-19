@@ -28,7 +28,7 @@ export default {
 </script>
 <template>
    <div
-      :class="` flex flex-col justify-end gap-[27px] h-[600px] ${data[dataIndex].bgImage} bg-contain px-6 pb-14 text-center ${data[dataIndex].textColor}`">
+      :class="` flex flex-col justify-end gap-[27px] h-[600px] ${data[dataIndex].bgImage} bg-cover px-6 MBL:px-10 pb-14 text-center ${data[dataIndex].textColor}`">
       <h2 class=" text-[28px] leading-[36px] tracking-[-.2px] font-fraunces font-black">
          {{ data[dataIndex].header }}
       </h2>

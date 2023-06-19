@@ -31,7 +31,7 @@ export default {
 }
 </script>
 <template>
-   <div class=" flex flex-col items-center bg-neo-color-one px-6 py-16 text-center">
+   <div class=" flex flex-col items-center bg-neo-color-one px-6 MBL:px-10 py-16 text-center">
       <h2
          class=" mb-6 text-neo-very-dark-desaturated-blue text-[32px] leading-[47px] tracking-[-.23px] font-fraunces font-black">
          {{ data[dataIndex].header }}

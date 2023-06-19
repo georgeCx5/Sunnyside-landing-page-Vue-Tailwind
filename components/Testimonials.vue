@@ -40,7 +40,7 @@ export default {
 </script>
 <template>
    <div class=" flex flex-col items-center gap-8">
-      <img class=" w-[72px] rounded-full" :src="data[dataIndex].photo" alt="imgPhotoEmily">
+      <img class=" w-[72px] rounded-full" :src="data[dataIndex].photo" alt="imgPhotoEmily" draggable="false">
       <p class=" text-neo-very-dark-grayish-blue text-[18px] leading-[32px] tracking-[-.13px] font-semibold">
          {{ data[dataIndex].main }}
       </p>

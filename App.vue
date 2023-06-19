@@ -3,6 +3,10 @@ import NavBtn from './components/NavBtn.vue';
 import SectionText from './components/SectionText.vue';
 import SectionTextAndImage from './components/SectionTextAndImage.vue';
 import Testimonials from './components/Testimonials.vue';
+import SectionGallery from './components/SectionGallery.vue';
+import FooterLogo from './components/FooterLogo.vue';
+import FooterBtn from './components/FooterBtn.vue';
+import FooterNetwork from './components/FooterNetwork.vue';
 
 import Logo from '@/assets/images/logo.svg?component';
 import IconHamburger from '@/assets/images/icon-hamburger.svg?component';
@@ -10,7 +14,6 @@ import IconArrow from '@/assets/images/icon-arrow-down.svg?component';
 
 import imgEgg from '@/assets/images/mobile/image-transform.jpg';
 import imgGlass from '@/assets/images/mobile/image-stand-out.jpg';
-// import imgPhotoEmily from '@/assets/images/image-emily.jpg'
 
 export default {
   data() {
@@ -19,7 +22,6 @@ export default {
       imgEgg,
       imgGlass,
       isBarOpen: false,
-      // imgPhotoEmily,
     }
   },
   components: {
@@ -27,6 +29,10 @@ export default {
     SectionText,
     SectionTextAndImage,
     Testimonials,
+    SectionGallery,
+    FooterLogo,
+    FooterBtn,
+    FooterNetwork,
 
     Logo,
     IconHamburger,
@@ -41,7 +47,8 @@ export default {
 </script>
 <template>
   <body class=" flex flex-col items-center text-neo-dark-grayish-blue font-barlow">
-    <header :class="` ${imgHeaderMB} bg-contain relative flex flex-col gap-[88px] w-[375px] h-[538px] px-6 py-8`">
+    <header
+      :class="` ${imgHeaderMB} bg-cover relative flex flex-col gap-[88px] w-[375px] MBL:w-[425px] h-[538px] px-6 py-8`">
       <nav class=" relative flex justify-between">
         <Logo />
         <IconHamburger @click="isBarOpen = !isBarOpen" :class="`  ${barState} cursor-pointer`" />
@@ -68,24 +75,39 @@ export default {
         <IconArrow />
       </div>
     </header>
-    <main class=" w-[375px]">
+    <main class=" min-w-[375px] MBL:max-w-[450px]">
       <img :src="imgEgg" alt="imgEgg">
       <SectionText :data-index="0" />
       <img :src="imgGlass" alt="imgGlass">
       <SectionText :data-index="1" />
       <SectionTextAndImage :data-index="0" />
       <SectionTextAndImage :data-index="1" />
-      <div class=" flex flex-col gap-16 px-6 py-16 bg-neo-color-one text-center">
+      <div class=" flex flex-col gap-16 px-6 MBL:px-10 py-16 bg-neo-color-one text-center">
         <h3 class=" text-[16px] leading-[18px] tracking-[4px] font-fraunces font-black uppercase">Client testimonials</h3>
         <Testimonials :data-index="0" />
         <Testimonials :data-index="1" />
         <Testimonials :data-index="2" />
       </div>
+      <SectionGallery />
     </main>
+    <footer class=" flex flex-col items-center w-[375px] MBL:w-[425px] pt-16 pb-20 bg-neo-color-two">
+      <FooterLogo class=" scale-[1.33] m-[4px] mb-11" />
+      <div class=" flex gap-[57px] mb-[88px]">
+        <FooterBtn btn-text="About" />
+        <FooterBtn btn-text="Services" />
+        <FooterBtn btn-text="Projects" />
+      </div>
+      <div class=" flex gap-7 items-center">
+        <FooterNetwork data-name="facebook" />
+        <FooterNetwork data-name="instagram" />
+        <FooterNetwork data-name="twitter" />
+        <FooterNetwork data-name="pinterest" />
+      </div>
+    </footer>
   </body>
 </template>
 <style>
 .g {
-  color: hsl(213, 9%, 39%);
+  color: #458c7e
 }
 </style>
