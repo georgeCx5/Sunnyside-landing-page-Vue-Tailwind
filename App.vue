@@ -7,6 +7,7 @@ import SectionGallery from './components/SectionGallery.vue';
 import FooterLogo from './components/FooterLogo.vue';
 import FooterBtn from './components/FooterBtn.vue';
 import FooterNetwork from './components/FooterNetwork.vue';
+import NavBtnDTL from './components/NavBtnDTL.vue';
 
 import Logo from '@/assets/images/logo.svg?component';
 import IconHamburger from '@/assets/images/icon-hamburger.svg?component';
@@ -34,6 +35,7 @@ export default {
     FooterLogo,
     FooterBtn,
     FooterNetwork,
+    NavBtnDTL,
 
     Logo,
     IconHamburger,
@@ -49,9 +51,18 @@ export default {
 <template>
   <body class=" flex flex-col items-center text-neo-dark-grayish-blue font-barlow">
     <header
-      :class="` ${imgHeaderMB} ${imgHeaderDTL} bg-cover relative flex flex-col gap-[88px] DTL:w-full min-w-[375px] MBL:max-w-[450px] DTL:max-w-screen-DTL h-[538px] DTL:h-[800px] px-6 py-8`">
-      <nav class=" relative flex justify-between">
-        <Logo />
+      :class="` ${imgHeaderMB} ${imgHeaderDTL} bg-cover relative flex flex-col gap-[88px] DTL:gap-[105px] DTL:w-full min-w-[375px] MBL:max-w-[450px] DTL:max-w-screen-DTL h-[538px] DTL:h-[800px] px-6 DTL:px-10 py-8`">
+      <nav class=" relative flex items-center justify-between">
+        <Logo class=" DTL:scale-[1.33] DTL:ml-5" />
+        <div class=" hidden DTL:flex gap-[47px]">
+          <NavBtnDTL btn-text="About" />
+          <NavBtnDTL btn-text="Services" />
+          <NavBtnDTL btn-text="Projects" />
+          <button
+            class=" w-[140px] h-14 bg-neo-white hover:bg-opacity-25 text-neo-very-dark-desaturated-blue hover:text-neo-white text-[15px] leading-[25px] tracking-[-.11px] font-bold font-fraunces uppercase rounded-[28px]">
+            Contact
+          </button>
+        </div>
         <IconHamburger @click="isBarOpen = !isBarOpen" :class="` DTL:hidden ${barState} cursor-pointer`" />
         <!-- Mobile Bar -->
         <div v-show="isBarOpen" class=" absolute right-0 top-[50px] DTL:hidden pointer-events-none">
@@ -71,8 +82,9 @@ export default {
         </div>
         <!--  -->
       </nav>
-      <div class=" flex flex-col items-center gap-[52px] text-center">
-        <h1 class=" text-neo-white text-[40px] leading-[47px] tracking-[6.25px] font-black font-fraunces uppercase">
+      <div class=" flex flex-col items-center gap-[52px] DTL:gap-[97px] text-center">
+        <h1
+          class=" text-neo-white text-[40px] DTL:text-[56px] leading-[47px] DTL:leading-[66px] tracking-[6.25px] DTL:tracking-[8.75px] font-black font-fraunces uppercase">
           We are creatives
         </h1>
         <IconArrow />
@@ -88,7 +100,9 @@ export default {
     </main>
     <section
       class=" flex flex-col gap-16 DTL:gap-[81px] MBL:max-w-[450px] DTL:max-w-screen-DTL px-6 MBL:px-10 py-16 DTL:py-40 bg-neo-color-one text-center">
-      <h3 class=" text-[16px] DTL:text-[20px] leading-[18px] DTL:leading-[24px] tracking-[4px] DTL:tracking-[5px] font-fraunces font-black uppercase">Client testimonials</h3>
+      <h3
+        class=" text-[16px] DTL:text-[20px] leading-[18px] DTL:leading-[24px] tracking-[4px] DTL:tracking-[5px] font-fraunces font-black uppercase">
+        Client testimonials</h3>
       <div class=" flex flex-col DTL:flex-row gap-16 DTL:gap-[30px]">
         <Testimonials :data-index="0" />
         <Testimonials :data-index="1" />
@@ -96,7 +110,8 @@ export default {
       </div>
     </section>
     <SectionGallery />
-    <footer class=" flex flex-col items-center w-full min-w-[375px] MBL:max-w-[450px] pt-16 pb-20 bg-neo-color-two">
+    <footer
+      class=" flex flex-col items-center w-full MBL:max-w-[450px] DTL:max-w-screen-DTL DTL:py-[72px] pt-16 pb-20 bg-neo-color-two">
       <FooterLogo class=" scale-[1.33] m-[4px] mb-11" />
       <div class=" flex gap-[57px] mb-[88px]">
         <FooterBtn btn-text="About" />
@@ -115,4 +130,5 @@ export default {
 <style>
 .g {
   color: #458c7e
-}</style>
+}
+</style>
