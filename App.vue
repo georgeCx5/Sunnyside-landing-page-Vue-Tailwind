@@ -19,6 +19,7 @@ export default {
   data() {
     return {
       imgHeaderMB: 'bg-[url(@/assets/images/mobile/image-header.jpg)]',
+      imgHeaderDTL: 'DTL:bg-[url(@/assets/images/desktop/image-header.jpg)]',
       imgEgg,
       imgGlass,
       isBarOpen: false,
@@ -48,11 +49,12 @@ export default {
 <template>
   <body class=" flex flex-col items-center text-neo-dark-grayish-blue font-barlow">
     <header
-      :class="` ${imgHeaderMB} bg-cover relative flex flex-col gap-[88px] w-[375px] MBL:w-[425px] h-[538px] px-6 py-8`">
+      :class="` ${imgHeaderMB} ${imgHeaderDTL} bg-cover relative flex flex-col gap-[88px] DTL:w-full min-w-[375px] MBL:max-w-[450px] DTL:max-w-screen-DTL h-[538px] DTL:h-[800px] px-6 py-8`">
       <nav class=" relative flex justify-between">
         <Logo />
-        <IconHamburger @click="isBarOpen = !isBarOpen" :class="`  ${barState} cursor-pointer`" />
-        <div v-show="isBarOpen" class=" absolute right-0 top-[50px] pointer-events-none">
+        <IconHamburger @click="isBarOpen = !isBarOpen" :class="` DTL:hidden ${barState} cursor-pointer`" />
+        <!-- Mobile Bar -->
+        <div v-show="isBarOpen" class=" absolute right-0 top-[50px] DTL:hidden pointer-events-none">
           <div
             class=" absolute right-0 top-0 w-0 h-0 border-b-[24px] border-l-[24px] border-transparent border-b-neo-white">
           </div>
@@ -67,6 +69,7 @@ export default {
             </button>
           </div>
         </div>
+        <!--  -->
       </nav>
       <div class=" flex flex-col items-center gap-[52px] text-center">
         <h1 class=" text-neo-white text-[40px] leading-[47px] tracking-[6.25px] font-black font-fraunces uppercase">
@@ -75,22 +78,25 @@ export default {
         <IconArrow />
       </div>
     </header>
-    <main class=" min-w-[375px] MBL:max-w-[450px]">
-      <img :src="imgEgg" alt="imgEgg">
-      <SectionText :data-index="0" />
-      <img :src="imgGlass" alt="imgGlass">
-      <SectionText :data-index="1" />
-      <SectionTextAndImage :data-index="0" />
-      <SectionTextAndImage :data-index="1" />
-      <div class=" flex flex-col gap-16 px-6 MBL:px-10 py-16 bg-neo-color-one text-center">
-        <h3 class=" text-[16px] leading-[18px] tracking-[4px] font-fraunces font-black uppercase">Client testimonials</h3>
+    <main class=" grid grid-flow-row grid-cols-1 DTL:grid-cols-2 min-w-[375px] MBL:max-w-[450px] DTL:max-w-screen-DTL">
+      <img class=" order-1 DTL:order-2" :src="imgEgg" alt="imgEgg">
+      <SectionText class=" order-2 DTL:order-1" :data-index="0" />
+      <img class=" order-3" :src="imgGlass" alt="imgGlass">
+      <SectionText class=" order-4" :data-index="1" padding-dir="right" />
+      <SectionTextAndImage class=" order-5" :data-index="0" />
+      <SectionTextAndImage class=" order-6" :data-index="1" />
+    </main>
+    <section
+      class=" flex flex-col gap-16 DTL:gap-[81px] MBL:max-w-[450px] DTL:max-w-screen-DTL px-6 MBL:px-10 py-16 DTL:py-40 bg-neo-color-one text-center">
+      <h3 class=" text-[16px] DTL:text-[20px] leading-[18px] DTL:leading-[24px] tracking-[4px] DTL:tracking-[5px] font-fraunces font-black uppercase">Client testimonials</h3>
+      <div class=" flex flex-col DTL:flex-row gap-16 DTL:gap-[30px]">
         <Testimonials :data-index="0" />
         <Testimonials :data-index="1" />
         <Testimonials :data-index="2" />
       </div>
-      <SectionGallery />
-    </main>
-    <footer class=" flex flex-col items-center w-[375px] MBL:w-[425px] pt-16 pb-20 bg-neo-color-two">
+    </section>
+    <SectionGallery />
+    <footer class=" flex flex-col items-center w-full min-w-[375px] MBL:max-w-[450px] pt-16 pb-20 bg-neo-color-two">
       <FooterLogo class=" scale-[1.33] m-[4px] mb-11" />
       <div class=" flex gap-[57px] mb-[88px]">
         <FooterBtn btn-text="About" />
@@ -109,5 +115,4 @@ export default {
 <style>
 .g {
   color: #458c7e
-}
-</style>
+}</style>

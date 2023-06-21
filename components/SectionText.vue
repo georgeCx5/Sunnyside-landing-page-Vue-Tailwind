@@ -21,22 +21,30 @@ export default {
       dataIndex: {
          Number,
          default: 0,
+      },
+      paddingDir: {
+         String,
+         default: 'left',
       }
    },
    computed: {
       hoverState() {
          return this.isHovered ? 'opacity-[1]' : 'opacity-[.25]';
+      },
+      paddingState() {
+         return this.paddingDir == 'left' ? 'DTL:pl-[165px] DTL:pr-[110px]' : 'DTL:pl-[110px] DTL:pr-[165px]';
       }
    }
 }
 </script>
 <template>
-   <div class=" flex flex-col items-center bg-neo-color-one px-6 MBL:px-10 py-16 text-center">
+   <div
+      :class="` flex flex-col items-center DTL:items-start bg-neo-color-one px-6 MBL:px-10 ${paddingState} py-16 DTL:py-[158px] text-center DTL:text-left`">
       <h2
-         class=" mb-6 text-neo-very-dark-desaturated-blue text-[32px] leading-[47px] tracking-[-.23px] font-fraunces font-black">
+         class=" mb-6 DTL:mb-8 text-neo-very-dark-desaturated-blue text-[32px] DTL:text-[40px] leading-[47px] tracking-[-.23px] DTL:tracking-[-.29px] font-fraunces font-black">
          {{ data[dataIndex].header }}
       </h2>
-      <p class=" mb-8 text-[18px] leading-[30px] tracking-[-.13px] font-semibold">
+      <p class=" mb-8 DTL:mb-10 text-[18px] leading-[30px] tracking-[-.13px] font-semibold">
          {{ data[dataIndex].main }}
       </p>
       <button @mouseenter="isHovered = true" @mouseleave="isHovered = false"
